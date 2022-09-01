@@ -1,9 +1,9 @@
 package com.example.stackexchangeapp.ui.views.recyclerview
 
 import com.example.stackexchangeapp.data.models.Question
-import com.example.stackexchangeapp.ui.views.common.BaseView
+import com.example.stackexchangeapp.ui.views.common.IBaseView
 
-interface QuestionsRecyclerView: BaseView {
+interface QuestionsRecyclerView: IBaseView {
 
     interface OnQuestionClickedListener {
         fun onQuestionClicked(question: Question)
