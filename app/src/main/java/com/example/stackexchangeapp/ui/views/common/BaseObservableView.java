@@ -6,7 +6,7 @@ import java.util.Set;
 
 public abstract class BaseObservableView <ListenerType> extends BaseView implements IObservableView<ListenerType> {
 
-    private Set<ListenerType> listeners = new HashSet();
+    private final Set<ListenerType> listeners = new HashSet();
 
     @Override
     public void registerListener(ListenerType listener) {

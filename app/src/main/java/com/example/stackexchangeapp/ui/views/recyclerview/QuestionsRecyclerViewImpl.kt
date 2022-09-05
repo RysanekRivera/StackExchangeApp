@@ -6,12 +6,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stackexchangeapp.R
 import com.example.stackexchangeapp.data.models.Question
+import com.example.stackexchangeapp.domain.common.ViewFactory
 import com.example.stackexchangeapp.ui.adapters.QuestionsRecyclerViewAdapter
 import com.example.stackexchangeapp.ui.views.common.BaseObservableView
 
 class QuestionsRecyclerViewImpl(
     inflater: LayoutInflater,
-    parent: ViewGroup?
+    parent: ViewGroup?,
+    viewFactory: ViewFactory
 ) : BaseObservableView<QuestionsRecyclerView.OnQuestionClickedListener>(),
     QuestionsRecyclerView,
     QuestionsRecyclerViewAdapter.OnQuestionClickedListener{
@@ -20,7 +22,7 @@ class QuestionsRecyclerViewImpl(
 
     init {
         setRootView(inflater.inflate(R.layout.layout_questions_list, parent, false))
-        questionsRecyclerViewAdapter = QuestionsRecyclerViewAdapter(inflater, this)
+        questionsRecyclerViewAdapter = QuestionsRecyclerViewAdapter(this, viewFactory)
         findViewById<RecyclerView>(R.id.rvQuestionsList).apply {
             adapter = questionsRecyclerViewAdapter
             layoutManager = GridLayoutManager(context, 1)

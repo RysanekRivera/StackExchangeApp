@@ -9,7 +9,7 @@ import com.example.stackexchangeapp.ui.views.common.BaseObservableView
 
 class QuestionsListItemViewImpl(
     inflater: LayoutInflater,
-    parent: ViewGroup
+    parent: ViewGroup?
 ): BaseObservableView<QuestionsListItemView.Listener>(), QuestionsListItemView {
 
     private val txtTitle: TextView

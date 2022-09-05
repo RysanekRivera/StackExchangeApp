@@ -1,15 +1,14 @@
 package com.example.stackexchangeapp.ui.adapters
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stackexchangeapp.data.models.Question
+import com.example.stackexchangeapp.domain.common.ViewFactory
 import com.example.stackexchangeapp.ui.views.item.QuestionsListItemView
-import com.example.stackexchangeapp.ui.views.item.QuestionsListItemViewImpl
 
 class QuestionsRecyclerViewAdapter (
-    private val inflater: LayoutInflater,
-    private val listener: OnQuestionClickedListener
+    private val listener: OnQuestionClickedListener,
+    private val factory: ViewFactory
 ): RecyclerView.Adapter<QuestionsRecyclerViewAdapter.QuestionsViewHolder>(),
     QuestionsListItemView.Listener {
 
@@ -30,7 +29,7 @@ class QuestionsRecyclerViewAdapter (
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionsViewHolder {
-        val listItemView: QuestionsListItemView = QuestionsListItemViewImpl(inflater, parent)
+        val listItemView: QuestionsListItemView = factory.getQuestionSingleItemView(parent)
         listItemView.registerListener(this)
         return QuestionsViewHolder(listItemView)
     }
